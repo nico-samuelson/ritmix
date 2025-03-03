@@ -1,5 +1,5 @@
 //
-//  MusicPlayerView.swift
+//  TrackView.swift
 //  mmp
 //
 //  Created by Nico Samuelson on 03/03/25.
@@ -7,9 +7,8 @@
 
 import SwiftUI
 
-struct MusicPlayerView: View {
-    @State private var viewModel = MusicPlayerViewModel()
-    @State private var playback: Float = 15
+struct TrackView: View {
+    @State private var viewModel = TrackViewModel()
     
     var body: some View {
         NavigationStack {
@@ -64,7 +63,7 @@ struct MusicPlayerView: View {
                             }
                             
                             Slider(
-                                value: $playback,
+                                value: $viewModel.playback,
                                 in: 0...30,
                                 step: 1,
                                 minimumValueLabel: Text("0:00"),
@@ -90,5 +89,5 @@ struct MusicPlayerView: View {
 }
 
 #Preview {
-    MusicPlayerView()
+    TrackView()
 }

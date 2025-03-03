@@ -1,5 +1,5 @@
 //
-//  TrackView.swift
+//  TrackItem.swift
 //  mmp
 //
 //  Created by Nico Samuelson on 03/03/25.
@@ -12,38 +12,36 @@ struct TrackItem: View {
     @Binding var currentPlaying: Track?
     
     var body: some View {
-        NavigationStack {
-            HStack(spacing: 16) {
-                Thumbnail(url: track.thumbnail)
-                
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(track.title)
-                        .fontWeight(.bold)
-                        .font(.headline)
-                        .foregroundStyle(currentPlaying?.id == track.id ? .green : .black)
-                        .truncated()
-                    Text(track.artist)
-                        .fontWeight(.medium)
-                        .font(.subheadline)
-                        .foregroundStyle(currentPlaying?.id == track.id ? .green : .black)
-                        .truncated()
-                    Text(track.album)
-                        .font(.callout)
-                        .foregroundStyle(currentPlaying?.id == track.id ? .green : .gray)
-                        .truncated()
-                }
-                
-                Spacer()
-                
-                if currentPlaying?.id == track.id {
-                    Image(systemName: "waveform")
-                        .symbolEffect(.variableColor.iterative.reversing, options: .repeat(.continuous))
-                        .foregroundStyle(.green)
-                }
+        HStack(spacing: 16) {
+            Thumbnail(url: track.thumbnail)
+            
+            VStack(alignment: .leading, spacing: 4) {
+                Text(track.title)
+                    .fontWeight(.bold)
+                    .font(.headline)
+                    .foregroundStyle(currentPlaying?.id == track.id ? .accent : .primary)
+                    .truncated()
+                Text(track.artist)
+                    .fontWeight(.medium)
+                    .font(.subheadline)
+                    .foregroundStyle(currentPlaying?.id == track.id ? .accent : .primary)
+                    .truncated()
+                Text(track.album)
+                    .font(.subheadline)
+                    .foregroundStyle(currentPlaying?.id == track.id ? .accent : .gray)
+                    .truncated()
             }
-            .onTapGesture {
-                currentPlaying = track
+            Spacer()
+            
+            if currentPlaying?.id == track.id {
+                Image(systemName: "waveform")
+                    .symbolEffect(.variableColor.iterative.reversing, options: .repeat(.continuous))
+                    .foregroundStyle(.accent)
             }
+        }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            currentPlaying = track
         }
     }
 }
