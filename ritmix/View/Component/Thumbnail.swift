@@ -14,9 +14,9 @@ struct Thumbnail: View {
     var body: some View {
         AsyncImage(url: URL(string: url)) { phase in
             switch phase {
-            case .empty:
+            case .empty, .failure:
                 Rectangle()
-                    .background(Color.gray.opacity(0.1))
+                    .foregroundStyle(Color.gray.opacity(0.1))
                     .clipShape(RoundedRectangle(cornerRadius: 12))
                     .overlay{
                         ProgressView()
@@ -28,12 +28,6 @@ struct Thumbnail: View {
                     .scaledToFit()
                     .frame(width: CGFloat(size), height: CGFloat(size))
                     .clipShape(RoundedRectangle(cornerRadius: 12))
-            case .failure:
-                Image(systemName: "photo") // Placeholder for failure
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: CGFloat(size), height: CGFloat(size))
-                    .foregroundColor(.gray)
             @unknown default:
                 EmptyView()
             }

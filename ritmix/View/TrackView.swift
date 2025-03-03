@@ -14,18 +14,85 @@ struct TrackView: View {
         NavigationStack {
             GeometryReader { gr in
                 List {
-                    ForEach(Array(viewModel.tracks.filter {
-                        viewModel.searchText.isEmpty || $0.title.lowercased().contains(viewModel.searchText.lowercased())
-                    }.enumerated()), id: \.element.id) { index, track in
-                        TrackItem(track: track, currentlyPlaying: viewModel.currentTrack?.id == track.id)
+                    // Search Bar
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                            .foregroundColor(.secondary)
+                            .padding(.leading, 8)
+                        
+                        TextField("Search Artist...", text: $viewModel.searchText)
+                            .foregroundColor(.primary)
+                        
+                        if !viewModel.searchText.isEmpty {
+                            Button(action: {
+                                viewModel.searchText = ""
+                            }) {
+                                Image(systemName: "xmark.circle.fill")
+                                    .foregroundColor(.secondary)
+                                    .padding(.trailing, 8)
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+                    .listRowSeparator(.hidden)
+                    .padding(10)
+                    .background(Color.secondary.opacity(0.1))
+                    .cornerRadius(10)
+                    
+                    if viewModel.isLoading {
+                        ForEach(Array(Array(0..<10).enumerated()), id: \.offset) { index, item in
+                            TrackSkeleton()
+                                .listRowSeparator(.hidden)
+                                .padding(.bottom, index == viewModel.tracks.count - 1 ? 120 : 0)
+                        }
+                    }
+                    else if viewModel.tracks.isEmpty {
+                        Spacer()
+                        if viewModel.searchText != "" && viewModel.isLoading {
+                            ContentUnavailableView {
+                                Label("No Tracks", systemImage: "magnifyingglass")
+                            } description: {
+                                Text("No result found for \"\(viewModel.searchText)\"")
+                            }
                             .listRowSeparator(.hidden)
-                            .padding(.bottom, index == viewModel.tracks.count - 1 ? 120 : 0)
-                            .onTapGesture {
-                                withAnimation {
-                                    viewModel.currentIndex = index
-                                    viewModel.playTrack()
+                        }
+                        else if viewModel.searchText == "" && viewModel.tracks.isEmpty {
+                            ContentUnavailableView {
+                                Label("No Tracks", systemImage: "magnifyingglass")
+                            } description: {
+                                Text("Start searching to listen some music")
+                            }
+                            .listRowSeparator(.hidden)
+                        }
+                        else if viewModel.errors != "" {
+                            ContentUnavailableView {
+                                Label("Error", systemImage: "x.circle.fill")
+                            } description: {
+                                VStack {
+                                    Text("An error occured while searching for \"\(viewModel.searchText)\". Try seearching for something else or ")
+                                    Button {
+                                        viewModel.debouncedFetchTracks()
+                                    } label: {
+                                        Text("Try again")
+                                            .foregroundStyle(.accent)
+                                    }
                                 }
                             }
+                            .listRowSeparator(.hidden)
+                        }
+                    }
+                    else {
+                        ForEach(Array(viewModel.tracks.enumerated()), id: \.element.id) { index, track in
+                            TrackItem(track: track, currentlyPlaying: viewModel.currentTrack?.id == track.id)
+                                .listRowSeparator(.hidden)
+                                .padding(.bottom, index == viewModel.tracks.count - 1 ? 120 : 0)
+                                .onTapGesture {
+                                    withAnimation {
+                                        viewModel.currentTrack = track
+                                        viewModel.playTrack()
+                                    }
+                                }
+                        }
                     }
                 }
                 .listStyle(.plain)
@@ -97,10 +164,13 @@ struct TrackView: View {
                 }
             }
         }
-        .searchable(text: $viewModel.searchText, prompt: "Search Artist...")
+        .onChange(of: viewModel.searchText) {
+            viewModel.debouncedFetchTracks()
+        }
         .onReceive(NotificationCenter.default.publisher(for: Notification.Name("TrackFinished"))) { _ in
             withAnimation {
-                viewModel.currentIndex = (viewModel.currentIndex + 1) % viewModel.tracks.count
+                let index = (viewModel.getCurrentTrackIndex() + 1) % viewModel.tracks.count
+                viewModel.currentTrack = viewModel.tracks[index]
                 viewModel.playTrack()
             }
         }

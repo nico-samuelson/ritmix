@@ -35,8 +35,9 @@ struct TrackItem: View {
             
             if currentlyPlaying {
                 Image(systemName: "waveform")
-                    .symbolEffect(.variableColor.iterative, options: .repeat(.continuous))
+                    .symbolEffect(.variableColor.iterative)
                     .foregroundStyle(.accent)
+                    .font(.system(size: 24))
             }
         }
         .contentShape(Rectangle())

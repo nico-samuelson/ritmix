@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Track: Identifiable {
+struct Track: Identifiable, Codable {
     var id: UUID = UUID()
     var title: String = ""
     var artist: String = ""

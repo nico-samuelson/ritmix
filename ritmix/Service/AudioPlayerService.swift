@@ -40,8 +40,6 @@ class AudioPlayerService {
     func startAudio(urlString: String? = nil) {
         deactivateSession()
         activateSession()
-        
-        // Use provided URL or default
         let urlString = urlString ?? "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview122/v4/a7/32/0a/a7320af8-ddc6-f7ef-4812-8a3877cfd780/mzaf_12836494553105178407.plus.aac.p.m4a"
         
         guard let url = URL(string: urlString) else {
@@ -51,7 +49,7 @@ class AudioPlayerService {
         
         let playerItem = AVPlayerItem(url: url)
         
-        // Remove previous observer to avoid duplicates
+        // Remove previous observer
         NotificationCenter.default.removeObserver(self, name: .AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
         
         if let player = player {
@@ -62,6 +60,7 @@ class AudioPlayerService {
         }
         
         if let player = player {
+            player.volume = 1.0
             player.play()
         }
         
@@ -86,7 +85,7 @@ class AudioPlayerService {
             self.timeObserverToken = nil
         }
         
-        // Add new time observer with shorter interval for more responsive updates
+        // Add new time observer for live update
         let interval = CMTime(seconds: 0.1, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
         timeObserverToken = player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { time in
             let seconds = CMTimeGetSeconds(time)
@@ -141,10 +140,9 @@ class AudioPlayerService {
             return
         }
         
-        // Create a variable to hold our observer
         var statusObserver: NSKeyValueObservation?
         
-        // Now assign to the variable
+        // Assign value to duration as soon as it's ready
         statusObserver = playerItem.observe(\.status, options: [.new]) { item, _ in
             if item.status == .readyToPlay {
                 DispatchQueue.main.async {
