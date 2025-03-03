@@ -80,8 +80,87 @@ class TrackViewModel: ObservableObject {
             playURL: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/9c/16/61/9c1661fd-ec64-f5e5-39b4-782398d56508/mzaf_18438317548939967601.plus.aac.p.m4a"
         ),
     ]
+    var player: AudioPlayerService = AudioPlayerService()
     var isLoading: Bool = false
+    var currentTime: Double = 0
+    var duration: Double = 30
+    var isPlaying: Bool = false
+    var isSliding: Bool = false
     var searchText: String = ""
-    var currentlyPlaying: Track? = nil
-    var playback: Float = 15.0
+    var currentIndex: Int = -1
+    
+    var currentTrack: Track? {
+        return (currentIndex >= 0 && currentIndex < tracks.count) ? tracks[currentIndex] : nil
+    }
+    
+    // Helper function to format seconds to mm:ss
+    func formatTime(_ seconds: Double) -> String {
+        let totalSeconds = Int(seconds)
+        let minutes = totalSeconds / 60
+        let seconds = totalSeconds % 60
+        return String(format: "%d:%02d", minutes, seconds)
+    }
+    
+    func setupTimeObserver() {
+        player.addPeriodicTimeObserver { [weak self] time in
+            if !(self?.isSliding ?? false) {
+                self?.currentTime = time
+            }
+        }
+    }
+    
+    func playTrack() {
+        // Start playback with the track's URL
+        player.startAudio(urlString: currentTrack?.playURL)
+        isPlaying = true
+        
+        setupTimeObserver()
+        
+        // Get duration when ready
+        player.getDurationWhenReady { [weak self] duration in
+            DispatchQueue.main.async {
+                self?.duration = duration
+            }
+        }
+    }
+    
+    func pauseTrack() {
+        player.pause()
+        isPlaying = false
+    }
+    
+    func resumeTrack() {
+        player.play()
+        isPlaying = true
+    }
+    
+    @objc func playNextTrack() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.currentIndex = (self.currentIndex + 1) % self.tracks.count
+            self.playTrack()
+        }
+    }
+    
+    func playPrevTrack() {
+        if self.currentTime > 5.0 {
+            seekTo(second: 0)
+        }
+        else if currentIndex > 0 {
+            currentIndex -= 1
+            playTrack()
+        } else {
+            currentIndex = tracks.count - 1
+            playTrack()
+        }
+    }
+    
+    func seekTo(second: Double) {
+        player.pauseTimeObserver()
+        
+        player.seekTo(time: second)
+        currentTime = second
+        
+        setupTimeObserver()
+        resumeTrack()
+    }
 }
