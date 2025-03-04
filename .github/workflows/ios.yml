@@ -36,7 +36,7 @@ jobs:
   upload:
     name: Upload to TestFlight (Internal)
     runs-on: macos-latest
-    needs: archive
+    needs: build
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
