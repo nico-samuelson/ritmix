@@ -38,12 +38,6 @@ jobs:
             -scheme ritmix \
             -configuration Release \
             -archivePath build/ritmix.xcarchive \
-            -allowProvisioningUpdates \
-            DEVELOPMENT_TEAM="{{ secrets.TEAM_ID }}" \
-            CODE_SIGN_IDENTITY="Apple Development" \
-            CODE_SIGNING_REQUIRED=YES \
-            CODE_SIGNING_ALLOWED=YES \
-            ONLY_ACTIVE_ARCH=NO
 
       - name: Export IPA for Internal TestFlight
         run: |
