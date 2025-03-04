@@ -17,13 +17,16 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Get Provisioning Profile
+        run: xcrun altool --list-providers -u "nicos.t.65@gmail.com" -p "{{ secrets.APP_SPECIFIC_PASSWORD }}"
+
       - name: Archive App
         run: |
           xcodebuild archive -project ritmix.xcodeproj \
             -scheme ritmix \
             -archivePath build/ritmix.xcarchive \
             -allowProvisioningUpdates
-            DEVELOPMENT_TEAM="{{ secret.TEAM_ID }}"
+            DEVELOPMENT_TEAM="{{ secrets.TEAM_ID }}"
 
       - name: Export IPA for Internal TestFlight
         run: |
