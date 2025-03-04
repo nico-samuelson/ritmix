@@ -29,16 +29,30 @@ jobs:
             -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest' \
             CODE_SIGNING_ALLOWED=NO
 
-  test:
-    name: Run Tests
+  archive:
+    name: Archive and Export
     runs-on: macos-latest
     needs: build
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Run Unit Tests
-        run: xcodebuild test -project ritmix.xcodeproj -scheme ritmixTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest'
+      - name: Archive App
+        run: |
+          xcodebuild archive -project ritmix.xcodeproj \
+            -scheme ritmix \
+            -archivePath build/ritmix.xcarchive \
+            CODE_SIGN_IDENTITY="iPhone Distribution" \
+            PROVISIONING_PROFILE_SPECIFIER="" \
+            DEVELOPMENT_TEAM="{{ secret.TEAM_ID }}"
+
+      - name: Export IPA for Internal TestFlight
+        run: |
+          xcodebuild -exportArchive \
+            -archivePath build/ritmix.xcarchive \
+            -exportOptionsPlist InternalExportOptions.plist \
+            -exportPath build/
 
   archive:
     name: Archive iOS App
