@@ -49,12 +49,6 @@ jobs:
             -exportOptionsPlist InternalExportOptions.plist \
             -exportPath build/
 
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: ritmix-ipa
-          path: build/ritmix.ipa
-
   upload:
     name: Upload to TestFlight (Internal)
     runs-on: macos-latest
