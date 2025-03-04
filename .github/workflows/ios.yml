@@ -23,7 +23,6 @@ jobs:
             -scheme ritmix \
             -archivePath build/ritmix.xcarchive \
             -allowProvisioningUpdates
-            PROVISIONING_PROFILE_SPECIFIER="" \
             DEVELOPMENT_TEAM="{{ secret.TEAM_ID }}"
 
       - name: Export IPA for Internal TestFlight
