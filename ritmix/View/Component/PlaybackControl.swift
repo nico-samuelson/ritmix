@@ -27,19 +27,25 @@ struct PlaybackControl: View {
                 
                 HStack(spacing: 20) {
                     Button {
-                        viewModel.playbackManager.playPrevTrack()
+                        withAnimation {
+                            viewModel.playbackManager.playPrevTrack()
+                        }
                     } label: {
                         Image(systemName: "backward.fill").font(.system(size: 20))
                     }
                     
                     Button {
-                        viewModel.playbackManager.togglePlayback()
+                        withAnimation {
+                            viewModel.playbackManager.togglePlayback()
+                        }
                     } label: {
                         Image(systemName: viewModel.playbackManager.isPlaying ? "pause.fill" : "play.fill").font(.system(size: 24))
                     }
                     
                     Button {
-                        viewModel.playbackManager.playNextTrack()
+                        withAnimation {
+                            viewModel.playbackManager.playNextTrack()
+                        }
                     } label: {
                         Image(systemName: "forward.fill").font(.system(size: 20))
                     }

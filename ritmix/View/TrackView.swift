@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TrackView: View {
     @State private var viewModel = TrackViewModel()
+    @FocusState private var isFocused: Bool
     
     var body: some View {
         NavigationStack {
@@ -22,6 +23,7 @@ struct TrackView: View {
                         
                         TextField("Search Artist...", text: $viewModel.searchText)
                             .foregroundColor(.primary)
+                            .focused($isFocused)
                         
                         if !viewModel.searchText.isEmpty {
                             Button(action: {
@@ -75,7 +77,6 @@ struct TrackView: View {
                         }
                     case .found:
                         ForEach(Array(viewModel.playbackManager.tracks.enumerated()), id: \.element.id) { index, track in
-                            EmptyView()
                             TrackItem(
                                 track: track,
                                 currentlyPlaying: viewModel.playbackManager.currentTrack?.id == track.id
@@ -84,6 +85,7 @@ struct TrackView: View {
                             .padding(.bottom, index == viewModel.playbackManager.tracks.count - 1 ? 120 : 0)
                             .onTapGesture {
                                 withAnimation {
+                                    isFocused = false
                                     viewModel.playbackManager.currentTrack = track
                                     viewModel.playbackManager.playTrack()
                                 }
@@ -99,6 +101,13 @@ struct TrackView: View {
                         PlaybackControl(viewModel: $viewModel)
                     }
                 }
+                .simultaneousGesture(
+                    // Hide keyboard on scroll
+                    DragGesture().onChanged { _ in
+                        isFocused = false
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    }
+                )
             }
         }
         .onChange(of: viewModel.searchText) {
