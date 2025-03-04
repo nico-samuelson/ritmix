@@ -1,5 +1,4 @@
 name: iOS CI/CD Pipeline
-
 on:
   push:
     branches:
@@ -12,18 +11,39 @@ jobs:
   build:
     name: Archive and Export
     runs-on: macos-latest
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
+      - name: Install Apple Developer Certificates and Provisioning Profiles
+        uses: apple-actions/download-provisioning-profiles@v2
+        with:
+          bundle-id: 'com.ritmix'
+          profile-type: 'IOS_APP_DEVELOPMENT'
+          issuer-id: ${{ secrets.APP_STORE_API_ISSUER_ID }}
+          api-key-id: ${{ secrets.APP_STORE_API_KEY_ID }}
+          api-private-key: ${{ secrets.APP_STORE_API_PRIVATE_KEY }}
+
       - name: Archive App
+        env:
+          DEVELOPMENT_TEAM: ${{ secrets.TEAM_ID }}
         run: |
-          xcodebuild archive -project ritmix.xcodeproj \
+          xcodebuild archive \
+            -project ritmix.xcodeproj \
             -scheme ritmix \
+            -configuration Release \
             -archivePath build/ritmix.xcarchive \
-            -allowProvisioningUpdates
-            DEVELOPMENT_TEAM="{{ secret.TEAM_ID }}"
+            -allowProvisioningUpdates \
+            DEVELOPMENT_TEAM="{{ secrets.TEAM_ID }}" \
+            CODE_SIGN_IDENTITY="Apple Development" \
+            CODE_SIGNING_REQUIRED=YES \
+            CODE_SIGNING_ALLOWED=YES \
+            ONLY_ACTIVE_ARCH=NO
 
       - name: Export IPA for Internal TestFlight
         run: |
@@ -37,12 +57,18 @@ jobs:
     runs-on: macos-latest
     needs: build
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: ritmix-ipa
 
       - name: Upload to App Store Connect
         env:
           APPLE_ID: ${{ secrets.APPLE_ID }}
           APP_SPECIFIC_PASSWORD: ${{ secrets.APP_SPECIFIC_PASSWORD }}
         run: |
-          xcrun altool --upload-app -f $GITHUB_WORKSPACE/build/ritmix.ipa -t ios --apiKey ${{ secrets.APP_STORE_API_KEY_ID }} --apiIssuer ${{ secrets.APP_STORE_API_ISSUER_ID }}
+          xcrun altool --upload-app \
+            -f ritmix.ipa \
+            -t ios \
+            --apiKey ${{ secrets.APP_STORE_API_KEY_ID }} \
+            --apiIssuer ${{ secrets.APP_STORE_API_ISSUER_ID }}
