@@ -19,10 +19,6 @@ jobs:
       - name: Set up Xcode
         run: sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
 
-      - name: Install Dependencies
-        run: pod install --repo-update
-        working-directory: ios
-
       - name: Build iOS App
         run: xcodebuild -workspace ios/MyApp.xcworkspace -scheme MyApp -sdk iphoneos -configuration Release build
 
