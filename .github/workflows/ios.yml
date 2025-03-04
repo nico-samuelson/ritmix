@@ -13,6 +13,9 @@ jobs:
     name: Build iOS App
     runs-on: macos-latest
     steps:
+      - name: Debug - List files
+        run: ls -R
+
       - name: Checkout Repository
         uses: actions/checkout@v4
 
