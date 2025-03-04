@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import AVFoundation
 
 @Observable
 class TrackViewModel: ObservableObject {
