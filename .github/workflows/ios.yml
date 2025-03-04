@@ -30,14 +30,18 @@ jobs:
           api-private-key: ${{ secrets.APP_STORE_API_PRIVATE_KEY }}
 
       - name: Archive App
-        env:
-          DEVELOPMENT_TEAM: ${{ secrets.TEAM_ID }}
         run: |
           xcodebuild archive \
             -project ritmix.xcodeproj \
             -scheme ritmix \
-            -configuration Release \
             -archivePath build/ritmix.xcarchive \
+            -configuration Release \
+            -sdk iphoneos \
+            CODE_SIGN_STYLE=Manual \
+            DEVELOPMENT_TEAM=${{ secrets.TEAM_ID }} \
+            CODE_SIGN_IDENTITY="iPhone Developer" \
+            PROVISIONING_PROFILE_SPECIFIER="Ritmix" \
+            -allowProvisioningUpdates
 
       - name: Export IPA for Internal TestFlight
         run: |
