@@ -43,7 +43,6 @@ jobs:
           xcodebuild archive -project ritmix.xcodeproj \
             -scheme ritmix \
             -archivePath build/ritmix.xcarchive \
-            CODE_SIGN_IDENTITY="iPhone Distribution" \
             PROVISIONING_PROFILE_SPECIFIER="" \
             DEVELOPMENT_TEAM="{{ secret.TEAM_ID }}"
 
