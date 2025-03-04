@@ -13,9 +13,14 @@ jobs:
     name: Build iOS App
     runs-on: macos-latest
     steps:
-      - name: Debug - List files
-        run: ls -R
+      - name: Check Xcode Version
+        run: xcodebuild -version
 
+      - name: Install Xcode 16 (Experimental)
+        run: |
+          sudo xcode-select --switch /Applications/Xcode_16.0.app/Contents/Developer
+          sudo xcodebuild -license accept
+        
       - name: Checkout Repository
         uses: actions/checkout@v4
 
@@ -23,7 +28,7 @@ jobs:
         run: sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
 
       - name: Build iOS App
-        run: xcodebuild -project ios/ritmix.xcodeproj -scheme ritmix -sdk iphoneos -configuration Release build
+        run: xcodebuild -project ritmix.xcodeproj -scheme ritmix -sdk iphoneos -configuration Release build
 
   test:
     name: Run Tests
@@ -34,7 +39,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run Unit Tests
-        run: xcodebuild test -project ios/ritmix.xcodeproj -scheme ritmixTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest'
+        run: xcodebuild test -project ritmix.xcodeproj -scheme ritmixTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest'
 
   archive:
     name: Archive iOS App
@@ -45,13 +50,13 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Archive App
-        run: xcodebuild -project ios/ritmix.xcodeproj -scheme ritmix -sdk iphoneos -configuration Release archive -archivePath $GITHUB_WORKSPACE/build/ritmix.xcarchive
+        run: xcodebuild -project ritmix.xcodeproj -scheme ritmix -sdk iphoneos -configuration Release archive -archivePath $GITHUB_WORKSPACE/build/ritmix.xcarchive
 
       - name: Export .ipa File
         run: |
           xcodebuild -exportArchive \
           -archivePath $GITHUB_WORKSPACE/build/ritmix.xcarchive \
-          -exportOptionsPlist ios/exportOptions.plist \
+          -exportOptionsPlist exportOptions.plist \
           -exportPath $GITHUB_WORKSPACE/build
 
   upload:
