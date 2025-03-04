@@ -54,24 +54,6 @@ jobs:
             -exportOptionsPlist InternalExportOptions.plist \
             -exportPath build/
 
-  archive:
-    name: Archive iOS App
-    runs-on: macos-latest
-    needs: test
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Archive App
-        run: xcodebuild -project ritmix.xcodeproj -scheme ritmix -sdk iphoneos -configuration Release archive -archivePath $GITHUB_WORKSPACE/build/ritmix.xcarchive
-
-      - name: Export .ipa File
-        run: |
-          xcodebuild -exportArchive \
-          -archivePath $GITHUB_WORKSPACE/build/ritmix.xcarchive \
-          -exportOptionsPlist exportOptions.plist \
-          -exportPath $GITHUB_WORKSPACE/build
-
   upload:
     name: Upload to TestFlight (Internal)
     runs-on: macos-latest
