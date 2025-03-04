@@ -12,7 +12,6 @@ jobs:
   archive:
     name: Archive and Export
     runs-on: macos-latest
-    needs: build
 
     steps:
       - name: Checkout Repository
