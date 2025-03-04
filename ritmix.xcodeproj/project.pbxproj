@@ -25,7 +25,6 @@
 		04C9738E2D77604F0077E5EF /* AudioPlayerServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C973882D77604F0077E5EF /* AudioPlayerServiceTests.swift */; };
 		04C9738F2D77604F0077E5EF /* HttpServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C973892D77604F0077E5EF /* HttpServiceTests.swift */; };
 		04C973902D77604F0077E5EF /* PlaybackServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C9738A2D77604F0077E5EF /* PlaybackServiceTests.swift */; };
-		04C973912D77604F0077E5EF /* ritmixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C9738B2D77604F0077E5EF /* ritmixTests.swift */; };
 		04C973922D77604F0077E5EF /* TrackViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C9738C2D77604F0077E5EF /* TrackViewModelTests.swift */; };
 		04C973962D7760520077E5EF /* ritmixUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C973932D7760520077E5EF /* ritmixUITests.swift */; };
 		04C973972D7760520077E5EF /* ritmixUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C973942D7760520077E5EF /* ritmixUITestsLaunchTests.swift */; };
@@ -68,7 +67,6 @@
 		04C973882D77604F0077E5EF /* AudioPlayerServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerServiceTests.swift; sourceTree = "<group>"; };
 		04C973892D77604F0077E5EF /* HttpServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpServiceTests.swift; sourceTree = "<group>"; };
 		04C9738A2D77604F0077E5EF /* PlaybackServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackServiceTests.swift; sourceTree = "<group>"; };
-		04C9738B2D77604F0077E5EF /* ritmixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ritmixTests.swift; sourceTree = "<group>"; };
 		04C9738C2D77604F0077E5EF /* TrackViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewModelTests.swift; sourceTree = "<group>"; };
 		04C973932D7760520077E5EF /* ritmixUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ritmixUITests.swift; sourceTree = "<group>"; };
 		04C973942D7760520077E5EF /* ritmixUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ritmixUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -186,7 +184,6 @@
 				04C973882D77604F0077E5EF /* AudioPlayerServiceTests.swift */,
 				04C973892D77604F0077E5EF /* HttpServiceTests.swift */,
 				04C9738A2D77604F0077E5EF /* PlaybackServiceTests.swift */,
-				04C9738B2D77604F0077E5EF /* ritmixTests.swift */,
 				04C9738C2D77604F0077E5EF /* TrackViewModelTests.swift */,
 			);
 			path = ritmixTests;
@@ -382,7 +379,6 @@
 				04C9738E2D77604F0077E5EF /* AudioPlayerServiceTests.swift in Sources */,
 				04C9738F2D77604F0077E5EF /* HttpServiceTests.swift in Sources */,
 				04C973902D77604F0077E5EF /* PlaybackServiceTests.swift in Sources */,
-				04C973912D77604F0077E5EF /* ritmixTests.swift in Sources */,
 				04C973922D77604F0077E5EF /* TrackViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
