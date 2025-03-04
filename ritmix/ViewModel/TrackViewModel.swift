@@ -10,19 +10,11 @@ import AVFoundation
 
 @Observable
 class TrackViewModel: ObservableObject {
-    var tracks: [Track] = []
-    var player: AudioPlayerService = AudioPlayerService()
-    
-    var isLoading: Bool = false
-    var isPlaying: Bool = false
-    var isSliding: Bool = false
-    
-    var duration: Double = 30
-    var currentTime: Double = 0
-    var currentTrack: Track? = nil
-    
+    var playbackManager: PlaybackService = PlaybackService()
+    var httpService: HttpService = HttpService()
+    var pageState: PageState = .idle
     var searchText: String = ""
-    var errors: String = ""
+    var errors: String? = nil
     private var debounceWorkItem: DispatchWorkItem?
     
     func debouncedFetchTracks() {
@@ -33,23 +25,22 @@ class TrackViewModel: ObservableObject {
         }
         
         self.debounceWorkItem = workItem
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: workItem)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: workItem)
     }
     
     func fetchTracks() {
         if self.searchText != "" {
-            self.isLoading = true
-            fetchITunesData(artist: searchText.lowercased()) { result in
-                self.isLoading = false
+            pageState = .loading
+            self.httpService.fetchTracksData(artist: searchText.lowercased()) { result in
                 switch result {
                 case .success(let tracks):
-                    self.errors = ""
-                    print(tracks)
-                    self.tracks = tracks
+                    self.playbackManager.tracks = tracks
+                    self.errors = nil
+                    self.pageState = tracks.count == 0 ? .notFound : .found
                 case .failure(let error):
+                    self.playbackManager.tracks = []
                     self.errors = error.localizedDescription
-                    self.tracks = []
-                    print("Error fetching data: \(error.localizedDescription)")
+                    self.pageState = .error
                 }
             }
         }
@@ -62,82 +53,12 @@ class TrackViewModel: ObservableObject {
         let seconds = totalSeconds % 60
         return String(format: "%d:%02d", minutes, seconds)
     }
-    
-    func setupTimeObserver() {
-        self.player.addPeriodicTimeObserver { [weak self] time in
-            if !(self?.isSliding ?? false) {
-                self?.currentTime = time
-            }
-            self?.fadeOutVolume()
-        }
-    }
-    
-    func getCurrentTrackIndex() -> Int {
-        return self.tracks.firstIndex(where: {$0.id == currentTrack?.id}) ?? -1
-    }
-    
-    func playTrack() {
-        // Start playback with the track's URL
-        self.player.startAudio(urlString: currentTrack?.playURL)
-        self.isPlaying = true
-        
-        self.setupTimeObserver()
-        
-        // Get duration when ready
-        self.player.getDurationWhenReady { [weak self] duration in
-            DispatchQueue.main.async {
-                self?.duration = duration
-            }
-        }
-    }
-    
-    func pauseTrack() {
-        self.player.pause()
-        self.isPlaying = false
-    }
-    
-    func resumeTrack() {
-        self.player.play()
-        self.isPlaying = true
-    }
-    
-    @objc func playNextTrack() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            let index = (self.getCurrentTrackIndex() + 1) % self.tracks.count
-            self.currentTrack = self.tracks[index]
-            self.playTrack()
-        }
-    }
-    
-    func playPrevTrack() {
-        // replay the track if it's already played more than 5s
-        if self.currentTime > 5.0 {
-            return seekTo(second: 0)
-        }
-        
-        let currentIndex = self.getCurrentTrackIndex()
-        if currentIndex > 0 {
-            self.currentTrack = self.tracks[currentIndex - 1]
-            return self.playTrack()
-        } else {
-            self.currentTrack = self.tracks[tracks.count - 1]
-            return self.playTrack()
-        }
-    }
-    
-    func seekTo(second: Double) {
-        player.pauseTimeObserver()
-        
-        player.seekTo(time: second)
-        currentTime = second
-        
-        setupTimeObserver()
-        resumeTrack()
-    }
-    
-    func fadeOutVolume() {
-        if duration - currentTime <= 4.0 {
-            self.player.player?.volume -= max(0, 1.0 / 40)
-        }
-    }
+}
+
+enum PageState {
+    case idle
+    case loading
+    case notFound
+    case error
+    case found
 }

@@ -7,11 +7,20 @@
 
 import Foundation
 
-struct Track: Identifiable, Codable {
-    var id: UUID = UUID()
-    var title: String = ""
-    var artist: String = ""
-    var album: String = ""
-    var thumbnail: String = ""
-    var playURL: String = ""
+struct Track: Codable {
+    var id: Int?
+    let title: String?
+    let artist: String?
+    let album: String?
+    let thumbnail: String?
+    let playUrl: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "trackId"
+        case title = "trackName"
+        case artist = "artistName"
+        case album = "collectionName"
+        case thumbnail = "artworkUrl100"
+        case playUrl = "previewUrl"
+    }
 }

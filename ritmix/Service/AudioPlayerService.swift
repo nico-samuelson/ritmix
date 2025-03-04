@@ -17,6 +17,7 @@ class AudioPlayerService {
     
     deinit {
         removeObservers()
+        player = nil
     }
     
     func activateSession() {
@@ -37,13 +38,22 @@ class AudioPlayerService {
         } catch _ {}
     }
     
+    func deactivateSession() {
+        removeObservers()
+        do {
+            try session.setActive(false, options: .notifyOthersOnDeactivation)
+        } catch let error as NSError {
+            logger.error("Failed to deactivate audio session: \(error.localizedDescription)")
+        }
+    }
+    
     func startAudio(urlString: String? = nil) {
         deactivateSession()
         activateSession()
         let urlString = urlString ?? "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview122/v4/a7/32/0a/a7320af8-ddc6-f7ef-4812-8a3877cfd780/mzaf_12836494553105178407.plus.aac.p.m4a"
         
         guard let url = URL(string: urlString) else {
-            print("Invalid URL provided")
+            logger.error("Invalid URL provided")
             return
         }
         
@@ -53,7 +63,6 @@ class AudioPlayerService {
         NotificationCenter.default.removeObserver(self, name: .AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
         
         if let player = player {
-            print("Replacing current player")
             player.replaceCurrentItem(with: playerItem)
         } else {
             player = AVPlayer(playerItem: playerItem)
@@ -75,7 +84,7 @@ class AudioPlayerService {
     
     func addPeriodicTimeObserver(onUpdate: @escaping (Double) -> Void) {
         guard let player = player else {
-            print("Cannot add time observer - player is nil")
+            logger.info("Cannot add time observer - player is nil")
             return
         }
         
@@ -93,13 +102,6 @@ class AudioPlayerService {
         }
     }
     
-    func removeObservers() {
-        statusObserver?.invalidate()
-        durationObserver?.invalidate()
-        
-        pauseTimeObserver()
-    }
-    
     func pauseTimeObserver() {
         if let timeObserverToken = timeObserverToken, let player = player {
             player.removeTimeObserver(timeObserverToken)
@@ -107,13 +109,11 @@ class AudioPlayerService {
         }
     }
     
-    func deactivateSession() {
-        removeObservers()
-        do {
-            try session.setActive(false, options: .notifyOthersOnDeactivation)
-        } catch let error as NSError {
-            print("Failed to deactivate audio session: \(error.localizedDescription)")
-        }
+    func removeObservers() {
+        statusObserver?.invalidate()
+        durationObserver?.invalidate()
+        
+        pauseTimeObserver()
     }
     
     func play() {
