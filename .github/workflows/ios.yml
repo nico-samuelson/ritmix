@@ -15,6 +15,12 @@ jobs:
     steps:
       - name: Check Xcode Version
         run: xcodebuild -version
+
+      - name: Install Xcode 16 (Experimental)
+        run: |
+          sudo xcode-select --switch /Applications/Xcode_16.0.app/Contents/Developer
+          sudo xcodebuild -license accept
+        
       - name: Checkout Repository
         uses: actions/checkout@v4
 
