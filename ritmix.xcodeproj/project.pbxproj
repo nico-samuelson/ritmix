@@ -3,8 +3,33 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 53;
 	objects = {
+
+/* Begin PBXBuildFile section */
+		04C973792D7760380077E5EF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C973652D7760380077E5EF /* Preview Assets.xcassets */; };
+		04C9737A2D7760380077E5EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C973762D7760380077E5EF /* Assets.xcassets */; };
+		04C9737B2D7760380077E5EF /* iTunesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C973622D7760380077E5EF /* iTunesResponse.swift */; };
+		04C9737C2D7760380077E5EF /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C973632D7760380077E5EF /* Track.swift */; };
+		04C9737D2D7760380077E5EF /* AudioPlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C973672D7760380077E5EF /* AudioPlayerService.swift */; };
+		04C9737E2D7760380077E5EF /* HttpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C973682D7760380077E5EF /* HttpService.swift */; };
+		04C9737F2D7760380077E5EF /* PlaybackService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C973692D7760380077E5EF /* PlaybackService.swift */; };
+		04C973802D7760380077E5EF /* TruncateText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C9736B2D7760380077E5EF /* TruncateText.swift */; };
+		04C973812D7760380077E5EF /* PlaybackControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C9736D2D7760380077E5EF /* PlaybackControl.swift */; };
+		04C973822D7760380077E5EF /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C9736E2D7760380077E5EF /* Thumbnail.swift */; };
+		04C973832D7760380077E5EF /* TrackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C9736F2D7760380077E5EF /* TrackItem.swift */; };
+		04C973842D7760380077E5EF /* TrackSkeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C973702D7760380077E5EF /* TrackSkeleton.swift */; };
+		04C973852D7760380077E5EF /* TrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C973722D7760380077E5EF /* TrackView.swift */; };
+		04C973862D7760380077E5EF /* TrackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C973742D7760380077E5EF /* TrackViewModel.swift */; };
+		04C973872D7760380077E5EF /* ritmixApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C973772D7760380077E5EF /* ritmixApp.swift */; };
+		04C9738E2D77604F0077E5EF /* AudioPlayerServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C973882D77604F0077E5EF /* AudioPlayerServiceTests.swift */; };
+		04C9738F2D77604F0077E5EF /* HttpServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C973892D77604F0077E5EF /* HttpServiceTests.swift */; };
+		04C973902D77604F0077E5EF /* PlaybackServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C9738A2D77604F0077E5EF /* PlaybackServiceTests.swift */; };
+		04C973912D77604F0077E5EF /* ritmixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C9738B2D77604F0077E5EF /* ritmixTests.swift */; };
+		04C973922D77604F0077E5EF /* TrackViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C9738C2D77604F0077E5EF /* TrackViewModelTests.swift */; };
+		04C973962D7760520077E5EF /* ritmixUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C973932D7760520077E5EF /* ritmixUITests.swift */; };
+		04C973972D7760520077E5EF /* ritmixUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C973942D7760520077E5EF /* ritmixUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		04EB28D42D759225005A1907 /* PBXContainerItemProxy */ = {
@@ -25,28 +50,32 @@
 
 /* Begin PBXFileReference section */
 		04C972302D772EBE0077E5EF /* ritmixTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ritmixTests.xctestplan; sourceTree = "<group>"; };
+		04C973622D7760380077E5EF /* iTunesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesResponse.swift; sourceTree = "<group>"; };
+		04C973632D7760380077E5EF /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		04C973652D7760380077E5EF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		04C973672D7760380077E5EF /* AudioPlayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerService.swift; sourceTree = "<group>"; };
+		04C973682D7760380077E5EF /* HttpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpService.swift; sourceTree = "<group>"; };
+		04C973692D7760380077E5EF /* PlaybackService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackService.swift; sourceTree = "<group>"; };
+		04C9736B2D7760380077E5EF /* TruncateText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruncateText.swift; sourceTree = "<group>"; };
+		04C9736D2D7760380077E5EF /* PlaybackControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackControl.swift; sourceTree = "<group>"; };
+		04C9736E2D7760380077E5EF /* Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
+		04C9736F2D7760380077E5EF /* TrackItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackItem.swift; sourceTree = "<group>"; };
+		04C973702D7760380077E5EF /* TrackSkeleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackSkeleton.swift; sourceTree = "<group>"; };
+		04C973722D7760380077E5EF /* TrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackView.swift; sourceTree = "<group>"; };
+		04C973742D7760380077E5EF /* TrackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewModel.swift; sourceTree = "<group>"; };
+		04C973762D7760380077E5EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		04C973772D7760380077E5EF /* ritmixApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ritmixApp.swift; sourceTree = "<group>"; };
+		04C973882D77604F0077E5EF /* AudioPlayerServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerServiceTests.swift; sourceTree = "<group>"; };
+		04C973892D77604F0077E5EF /* HttpServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpServiceTests.swift; sourceTree = "<group>"; };
+		04C9738A2D77604F0077E5EF /* PlaybackServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackServiceTests.swift; sourceTree = "<group>"; };
+		04C9738B2D77604F0077E5EF /* ritmixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ritmixTests.swift; sourceTree = "<group>"; };
+		04C9738C2D77604F0077E5EF /* TrackViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewModelTests.swift; sourceTree = "<group>"; };
+		04C973932D7760520077E5EF /* ritmixUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ritmixUITests.swift; sourceTree = "<group>"; };
+		04C973942D7760520077E5EF /* ritmixUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ritmixUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		04EB28C32D759224005A1907 /* ritmix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ritmix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04EB28D32D759225005A1907 /* ritmixTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ritmixTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04EB28DD2D759225005A1907 /* ritmixUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ritmixUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		04EB28C52D759224005A1907 /* ritmix */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ritmix;
-			sourceTree = "<group>";
-		};
-		04EB28D62D759225005A1907 /* ritmixTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ritmixTests;
-			sourceTree = "<group>";
-		};
-		04EB28E02D759225005A1907 /* ritmixUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ritmixUITests;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		04EB28C02D759224005A1907 /* Frameworks */ = {
@@ -73,13 +102,112 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04C973642D7760380077E5EF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				04C973622D7760380077E5EF /* iTunesResponse.swift */,
+				04C973632D7760380077E5EF /* Track.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		04C973662D7760380077E5EF /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				04C973652D7760380077E5EF /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		04C9736A2D7760380077E5EF /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				04C973672D7760380077E5EF /* AudioPlayerService.swift */,
+				04C973682D7760380077E5EF /* HttpService.swift */,
+				04C973692D7760380077E5EF /* PlaybackService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		04C9736C2D7760380077E5EF /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				04C9736B2D7760380077E5EF /* TruncateText.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		04C973712D7760380077E5EF /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				04C9736D2D7760380077E5EF /* PlaybackControl.swift */,
+				04C9736E2D7760380077E5EF /* Thumbnail.swift */,
+				04C9736F2D7760380077E5EF /* TrackItem.swift */,
+				04C973702D7760380077E5EF /* TrackSkeleton.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		04C973732D7760380077E5EF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04C973712D7760380077E5EF /* Component */,
+				04C973722D7760380077E5EF /* TrackView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		04C973752D7760380077E5EF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				04C973742D7760380077E5EF /* TrackViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		04C973782D7760380077E5EF /* ritmix */ = {
+			isa = PBXGroup;
+			children = (
+				04C973642D7760380077E5EF /* Model */,
+				04C973662D7760380077E5EF /* Preview Content */,
+				04C9736A2D7760380077E5EF /* Service */,
+				04C9736C2D7760380077E5EF /* Utils */,
+				04C973732D7760380077E5EF /* View */,
+				04C973752D7760380077E5EF /* ViewModel */,
+				04C973762D7760380077E5EF /* Assets.xcassets */,
+				04C973772D7760380077E5EF /* ritmixApp.swift */,
+			);
+			path = ritmix;
+			sourceTree = "<group>";
+		};
+		04C9738D2D77604F0077E5EF /* ritmixTests */ = {
+			isa = PBXGroup;
+			children = (
+				04C973882D77604F0077E5EF /* AudioPlayerServiceTests.swift */,
+				04C973892D77604F0077E5EF /* HttpServiceTests.swift */,
+				04C9738A2D77604F0077E5EF /* PlaybackServiceTests.swift */,
+				04C9738B2D77604F0077E5EF /* ritmixTests.swift */,
+				04C9738C2D77604F0077E5EF /* TrackViewModelTests.swift */,
+			);
+			path = ritmixTests;
+			sourceTree = "<group>";
+		};
+		04C973952D7760520077E5EF /* ritmixUITests */ = {
+			isa = PBXGroup;
+			children = (
+				04C973932D7760520077E5EF /* ritmixUITests.swift */,
+				04C973942D7760520077E5EF /* ritmixUITestsLaunchTests.swift */,
+			);
+			path = ritmixUITests;
+			sourceTree = "<group>";
+		};
 		04EB28BA2D759224005A1907 = {
 			isa = PBXGroup;
 			children = (
 				04C972302D772EBE0077E5EF /* ritmixTests.xctestplan */,
-				04EB28C52D759224005A1907 /* ritmix */,
-				04EB28D62D759225005A1907 /* ritmixTests */,
-				04EB28E02D759225005A1907 /* ritmixUITests */,
+				04C973782D7760380077E5EF /* ritmix */,
+				04C9738D2D77604F0077E5EF /* ritmixTests */,
+				04C973952D7760520077E5EF /* ritmixUITests */,
 				04EB28C42D759224005A1907 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -109,9 +237,6 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				04EB28C52D759224005A1907 /* ritmix */,
-			);
 			name = ritmix;
 			packageProductDependencies = (
 			);
@@ -132,9 +257,6 @@
 			dependencies = (
 				04EB28D52D759225005A1907 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				04EB28D62D759225005A1907 /* ritmixTests */,
-			);
 			name = ritmixTests;
 			packageProductDependencies = (
 			);
@@ -154,9 +276,6 @@
 			);
 			dependencies = (
 				04EB28DF2D759225005A1907 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				04EB28E02D759225005A1907 /* ritmixUITests */,
 			);
 			name = ritmixUITests;
 			packageProductDependencies = (
@@ -214,6 +333,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04C973792D7760380077E5EF /* Preview Assets.xcassets in Resources */,
+				04C9737A2D7760380077E5EF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +359,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04C9737B2D7760380077E5EF /* iTunesResponse.swift in Sources */,
+				04C9737C2D7760380077E5EF /* Track.swift in Sources */,
+				04C9737D2D7760380077E5EF /* AudioPlayerService.swift in Sources */,
+				04C9737E2D7760380077E5EF /* HttpService.swift in Sources */,
+				04C9737F2D7760380077E5EF /* PlaybackService.swift in Sources */,
+				04C973802D7760380077E5EF /* TruncateText.swift in Sources */,
+				04C973812D7760380077E5EF /* PlaybackControl.swift in Sources */,
+				04C973822D7760380077E5EF /* Thumbnail.swift in Sources */,
+				04C973832D7760380077E5EF /* TrackItem.swift in Sources */,
+				04C973842D7760380077E5EF /* TrackSkeleton.swift in Sources */,
+				04C973852D7760380077E5EF /* TrackView.swift in Sources */,
+				04C973862D7760380077E5EF /* TrackViewModel.swift in Sources */,
+				04C973872D7760380077E5EF /* ritmixApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +379,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04C9738E2D77604F0077E5EF /* AudioPlayerServiceTests.swift in Sources */,
+				04C9738F2D77604F0077E5EF /* HttpServiceTests.swift in Sources */,
+				04C973902D77604F0077E5EF /* PlaybackServiceTests.swift in Sources */,
+				04C973912D77604F0077E5EF /* ritmixTests.swift in Sources */,
+				04C973922D77604F0077E5EF /* TrackViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +391,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04C973962D7760520077E5EF /* ritmixUITests.swift in Sources */,
+				04C973972D7760520077E5EF /* ritmixUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,7 +538,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_ASSET_PATHS = "\"ritmix/Preview Content\"";
 				DEVELOPMENT_TEAM = S9J78CS67W;
 				ENABLE_PREVIEWS = YES;
@@ -431,7 +572,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_ASSET_PATHS = "\"ritmix/Preview Content\"";
 				DEVELOPMENT_TEAM = S9J78CS67W;
 				ENABLE_PREVIEWS = YES;
@@ -466,7 +607,7 @@
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = S9J78CS67W;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ritmixTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -485,7 +626,7 @@
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = S9J78CS67W;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ritmixTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
