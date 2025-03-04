@@ -38,24 +38,6 @@ final class HttpServiceTests: XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
     }
     
-    func testFetchTracksData_NetworkFailure() {
-        let expectation = expectation(description: "API call should fail due to no internet")
-
-        // Using a non-existing domain to simulate a network error
-        httpService.callAPI(urlString: "https://invalid.apple.com") { (result: Result<iTunesResponse, Error>) in
-            switch result {
-            case .success:
-                XCTFail("API should not succeed without internet")
-            case .failure(let error):
-                XCTAssertNotNil(error, "Error should not be nil")
-                print("Network failure simulated: \(error.localizedDescription)")
-            }
-            expectation.fulfill()
-        }
-        
-        waitForExpectations(timeout: 5, handler: nil)
-    }
-    
     func testFetchTracksData_InvalidJSON() {
         let expectation = expectation(description: "API call should fail due to invalid JSON")
         

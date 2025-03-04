@@ -1,0 +1,71 @@
+name: iOS CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - ci/cd
+  pull_request:
+    branches:
+      - ci/cd
+
+jobs:
+  build:
+    name: Build iOS App
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Xcode
+        run: sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+
+      - name: Install Dependencies
+        run: pod install --repo-update
+        working-directory: ios
+
+      - name: Build iOS App
+        run: xcodebuild -workspace ios/MyApp.xcworkspace -scheme MyApp -sdk iphoneos -configuration Release build
+
+  test:
+    name: Run Tests
+    runs-on: macos-latest
+    needs: build
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Run Unit Tests
+        run: xcodebuild test -workspace ios/MyApp.xcworkspace -scheme MyApp -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest'
+
+  archive:
+    name: Archive iOS App
+    runs-on: macos-latest
+    needs: test
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Archive App
+        run: xcodebuild -workspace ios/MyApp.xcworkspace -scheme MyApp -sdk iphoneos -configuration Release archive -archivePath $GITHUB_WORKSPACE/build/MyApp.xcarchive
+
+      - name: Export .ipa File
+        run: |
+          xcodebuild -exportArchive \
+          -archivePath $GITHUB_WORKSPACE/build/MyApp.xcarchive \
+          -exportOptionsPlist ios/exportOptions.plist \
+          -exportPath $GITHUB_WORKSPACE/build
+
+  upload:
+    name: Upload to TestFlight (Internal)
+    runs-on: macos-latest
+    needs: archive
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Upload to App Store Connect
+        env:
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APP_SPECIFIC_PASSWORD: ${{ secrets.APP_SPECIFIC_PASSWORD }}
+        run: |
+          xcrun altool --upload-app -f $GITHUB_WORKSPACE/build/MyApp.ipa -t ios --apiKey ${{ secrets.APP_STORE_API_KEY_ID }} --apiIssuer ${{ secrets.APP_STORE_API_ISSUER_ID }}
