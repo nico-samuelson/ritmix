@@ -13,6 +13,8 @@ jobs:
     name: Build iOS App
     runs-on: macos-latest
     steps:
+      - name: Check Xcode Version
+        run: xcodebuild -version
       - name: Checkout Repository
         uses: actions/checkout@v4
 
