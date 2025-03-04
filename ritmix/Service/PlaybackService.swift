@@ -59,26 +59,25 @@ class PlaybackService {
     }
     
     @objc func playNextTrack() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            let index = (self.getCurrentTrackIndex() + 1) % self.tracks.count
-            self.currentTrack = self.tracks[index]
-            self.playTrack()
-        }
+        let index = (self.getCurrentTrackIndex() + 1) % self.tracks.count
+        self.currentTrack = self.tracks[index]
+        self.playTrack()
     }
     
     func playPrevTrack() {
         // Replay the track if it's already played more than 5s
         if self.currentTime > 5.0 {
-            return seekTo(second: 0)
+            seekTo(second: 0)
         }
-        
-        let currentIndex = self.getCurrentTrackIndex()
-        if currentIndex > 0 {
-            self.currentTrack = self.tracks[currentIndex - 1]
-            return self.playTrack()
-        } else {
-            self.currentTrack = self.tracks[tracks.count - 1]
-            return self.playTrack()
+        else {
+            let currentIndex = self.getCurrentTrackIndex()
+            if currentIndex > 0 {
+                self.currentTrack = self.tracks[currentIndex - 1]
+                self.playTrack()
+            } else {
+                self.currentTrack = self.tracks[tracks.count - 1]
+                self.playTrack()
+            }
         }
     }
     
