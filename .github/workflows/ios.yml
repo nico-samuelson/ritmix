@@ -9,7 +9,7 @@ on:
       - ci/cd
 
 jobs:
-  archive:
+  build:
     name: Archive and Export
     runs-on: macos-latest
 
