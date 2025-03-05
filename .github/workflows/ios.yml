@@ -12,19 +12,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-      
-      - name: Setup Xcode
-        uses: maxim-lobanov/setup-xcode@v1
-        with:
-          xcode-version: latest-stable
-          
-      - name: Install iOS 18.2 Simulator
-        run: |
-          sudo xcodebuild -downloadPlatform iOS
-          sudo xcodebuild -installPlatform iOS
-
-      - name: Get List of Simulators
-        run: xcrun simctl list devices
 
       - name: Run Unit Test
         run: |
@@ -40,12 +27,7 @@ jobs:
     steps:
       - name: Check Xcode version
         run: /usr/bin/xcodebuild -version
-
-      - name: Setup Xcode
-        uses: maxim-lobanov/setup-xcode@v1
-        with:
-          xcode-version: latest-stable
-
+        
       - name: Checkout Repository
         uses: actions/checkout@v4
 
