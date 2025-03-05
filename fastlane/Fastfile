@@ -135,7 +135,7 @@ platform :ios do
   lane :build_upload_testflight do
     connect_asc
     prepare_signing
-    # tests
+    tests
     fetch_and_increment_build_number
     build_release
     upload_release
