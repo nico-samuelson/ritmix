@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXContainerItemProxy section */
@@ -31,9 +31,22 @@
 		04EB28DD2D759225005A1907 /* ritmixUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ritmixUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		042F523D2D788AAA00B025F4 /* Exceptions for "ritmix" folder in "ritmix" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 04EB28C22D759224005A1907 /* ritmix */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		04EB28C52D759224005A1907 /* ritmix */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				042F523D2D788AAA00B025F4 /* Exceptions for "ritmix" folder in "ritmix" target */,
+			);
 			path = ritmix;
 			sourceTree = "<group>";
 		};
@@ -406,6 +419,7 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = S9J78CS67W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ritmix/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -444,6 +458,7 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = S9J78CS67W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ritmix/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
