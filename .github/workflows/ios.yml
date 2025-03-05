@@ -99,7 +99,7 @@ jobs:
           TESTFLIGHT_GROUPS="Beta Testers,Internal Testers"
           
           # Prepare the API key file from secret
-          echo "${{ secrets.APP_STORE_API_KEY_ID }}" > "${{ runner.temp }}/api_key.p8"
+          echo "${{ secrets.APP_STORE_API_PRIVATE_KEY }}" > ~/.appstoreconnect/private_keys/AuthKey_${{ secrets.APP_STORE_API_KEY_ID }}.p8
           chmod 400 "${{ runner.temp }}/api_key.p8"
           
           # Upload to TestFlight using altool
