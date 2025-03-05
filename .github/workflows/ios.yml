@@ -3,7 +3,7 @@ name: iOS binary build & upload
 on:
  push:
   branches:
-    - fastlane2
+    - main
  
 jobs:
   deploy:
