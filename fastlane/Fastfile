@@ -61,7 +61,6 @@ platform :ios do
       project: "ritmix.xcodeproj",
       devices: ["iPhone 14"],
       scheme: "ritmixTests",
-      testplan: './ritmix.xctestplan'
     )
   end
 
