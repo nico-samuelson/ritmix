@@ -1,0 +1,35 @@
+name: iOS binary build & upload
+ 
+on:
+ push:
+  branches:
+    - fastlane2
+ 
+jobs:
+  deploy:
+   runs-on: macos-latest
+   steps:
+    - uses: actions/checkout@v4
+ 
+    - name: Set up ruby env
+      uses: ruby/setup-ruby@v1.221.0
+      with:
+        ruby-version: 3.2.1
+        bundler-cache: true
+ 
+    - name: Decode signing certificate into a file
+      env:
+        CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
+        ASC_PRIVATE_KEY: ${{ secrets.APP_STORE_API_PRIVATE_KEY }}
+      run: |
+        echo $CERTIFICATE_BASE64 | base64 --decode > signing-cert.p12
+        echo "$ASC_PRIVATE_KEY" > asc_key.p8
+    
+    - name: Build & upload iOS binary
+      run: bundle exec fastlane ios build_upload_testflight
+      env:
+        ASC_KEY_ID: ${{ secrets.APP_STORE_API_KEY_ID }}
+        ASC_ISSUER_ID: ${{ secrets.APP_STORE_API_ISSUER_ID }}
+        ASC_KEY: ./asc_key.p8
+        SIGNING_KEY_PASSWORD: ${{ secrets.P12_PASSWORD }}
+        SIGNING_KEY_FILE_PATH: signing-cert.p12
