@@ -3,8 +3,33 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 53;
 	objects = {
+
+/* Begin PBXBuildFile section */
+		042F528B2D788B1E00B025F4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 042F52762D788B1E00B025F4 /* Preview Assets.xcassets */; };
+		042F528C2D788B1E00B025F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 042F52872D788B1E00B025F4 /* Assets.xcassets */; };
+		042F528E2D788B1E00B025F4 /* iTunesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F52732D788B1E00B025F4 /* iTunesResponse.swift */; };
+		042F528F2D788B1E00B025F4 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F52742D788B1E00B025F4 /* Track.swift */; };
+		042F52902D788B1E00B025F4 /* AudioPlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F52782D788B1E00B025F4 /* AudioPlayerService.swift */; };
+		042F52912D788B1E00B025F4 /* HttpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F52792D788B1E00B025F4 /* HttpService.swift */; };
+		042F52922D788B1E00B025F4 /* PlaybackService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F527A2D788B1E00B025F4 /* PlaybackService.swift */; };
+		042F52932D788B1E00B025F4 /* TruncateText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F527C2D788B1E00B025F4 /* TruncateText.swift */; };
+		042F52942D788B1E00B025F4 /* PlaybackControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F527E2D788B1E00B025F4 /* PlaybackControl.swift */; };
+		042F52952D788B1E00B025F4 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F527F2D788B1E00B025F4 /* Thumbnail.swift */; };
+		042F52962D788B1E00B025F4 /* TrackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F52802D788B1E00B025F4 /* TrackItem.swift */; };
+		042F52972D788B1E00B025F4 /* TrackSkeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F52812D788B1E00B025F4 /* TrackSkeleton.swift */; };
+		042F52982D788B1E00B025F4 /* TrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F52832D788B1E00B025F4 /* TrackView.swift */; };
+		042F52992D788B1E00B025F4 /* TrackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F52852D788B1E00B025F4 /* TrackViewModel.swift */; };
+		042F529A2D788B1E00B025F4 /* ritmixApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F52892D788B1E00B025F4 /* ritmixApp.swift */; };
+		042F52A12D788B2100B025F4 /* AudioPlayerServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F529B2D788B2100B025F4 /* AudioPlayerServiceTests.swift */; };
+		042F52A22D788B2100B025F4 /* HttpServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F529C2D788B2100B025F4 /* HttpServiceTests.swift */; };
+		042F52A32D788B2100B025F4 /* PlaybackServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F529D2D788B2100B025F4 /* PlaybackServiceTests.swift */; };
+		042F52A42D788B2100B025F4 /* ritmixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F529E2D788B2100B025F4 /* ritmixTests.swift */; };
+		042F52A52D788B2100B025F4 /* TrackViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F529F2D788B2100B025F4 /* TrackViewModelTests.swift */; };
+		042F52A92D788B2400B025F4 /* ritmixUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F52A62D788B2400B025F4 /* ritmixUITests.swift */; };
+		042F52AA2D788B2400B025F4 /* ritmixUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F52A72D788B2400B025F4 /* ritmixUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		04EB28D42D759225005A1907 /* PBXContainerItemProxy */ = {
@@ -24,29 +49,35 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		042F52082D78865300B025F4 /* ritmix.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ritmix.xctestplan; sourceTree = "<group>"; };
+		042F52732D788B1E00B025F4 /* iTunesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesResponse.swift; sourceTree = "<group>"; };
+		042F52742D788B1E00B025F4 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		042F52762D788B1E00B025F4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		042F52782D788B1E00B025F4 /* AudioPlayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerService.swift; sourceTree = "<group>"; };
+		042F52792D788B1E00B025F4 /* HttpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpService.swift; sourceTree = "<group>"; };
+		042F527A2D788B1E00B025F4 /* PlaybackService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackService.swift; sourceTree = "<group>"; };
+		042F527C2D788B1E00B025F4 /* TruncateText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruncateText.swift; sourceTree = "<group>"; };
+		042F527E2D788B1E00B025F4 /* PlaybackControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackControl.swift; sourceTree = "<group>"; };
+		042F527F2D788B1E00B025F4 /* Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
+		042F52802D788B1E00B025F4 /* TrackItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackItem.swift; sourceTree = "<group>"; };
+		042F52812D788B1E00B025F4 /* TrackSkeleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackSkeleton.swift; sourceTree = "<group>"; };
+		042F52832D788B1E00B025F4 /* TrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackView.swift; sourceTree = "<group>"; };
+		042F52852D788B1E00B025F4 /* TrackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewModel.swift; sourceTree = "<group>"; };
+		042F52872D788B1E00B025F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		042F52882D788B1E00B025F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		042F52892D788B1E00B025F4 /* ritmixApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ritmixApp.swift; sourceTree = "<group>"; };
+		042F529B2D788B2100B025F4 /* AudioPlayerServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerServiceTests.swift; sourceTree = "<group>"; };
+		042F529C2D788B2100B025F4 /* HttpServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpServiceTests.swift; sourceTree = "<group>"; };
+		042F529D2D788B2100B025F4 /* PlaybackServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackServiceTests.swift; sourceTree = "<group>"; };
+		042F529E2D788B2100B025F4 /* ritmixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ritmixTests.swift; sourceTree = "<group>"; };
+		042F529F2D788B2100B025F4 /* TrackViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewModelTests.swift; sourceTree = "<group>"; };
+		042F52A62D788B2400B025F4 /* ritmixUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ritmixUITests.swift; sourceTree = "<group>"; };
+		042F52A72D788B2400B025F4 /* ritmixUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ritmixUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		04C972302D772EBE0077E5EF /* ritmixTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ritmixTests.xctestplan; sourceTree = "<group>"; };
 		04EB28C32D759224005A1907 /* ritmix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ritmix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04EB28D32D759225005A1907 /* ritmixTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ritmixTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04EB28DD2D759225005A1907 /* ritmixUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ritmixUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		04EB28C52D759224005A1907 /* ritmix */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ritmix;
-			sourceTree = "<group>";
-		};
-		04EB28D62D759225005A1907 /* ritmixTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ritmixTests;
-			sourceTree = "<group>";
-		};
-		04EB28E02D759225005A1907 /* ritmixUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ritmixUITests;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		04EB28C02D759224005A1907 /* Frameworks */ = {
@@ -73,13 +104,114 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		042F52752D788B1E00B025F4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				042F52732D788B1E00B025F4 /* iTunesResponse.swift */,
+				042F52742D788B1E00B025F4 /* Track.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		042F52772D788B1E00B025F4 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				042F52762D788B1E00B025F4 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		042F527B2D788B1E00B025F4 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				042F52782D788B1E00B025F4 /* AudioPlayerService.swift */,
+				042F52792D788B1E00B025F4 /* HttpService.swift */,
+				042F527A2D788B1E00B025F4 /* PlaybackService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		042F527D2D788B1E00B025F4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				042F527C2D788B1E00B025F4 /* TruncateText.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		042F52822D788B1E00B025F4 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				042F527E2D788B1E00B025F4 /* PlaybackControl.swift */,
+				042F527F2D788B1E00B025F4 /* Thumbnail.swift */,
+				042F52802D788B1E00B025F4 /* TrackItem.swift */,
+				042F52812D788B1E00B025F4 /* TrackSkeleton.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		042F52842D788B1E00B025F4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				042F52822D788B1E00B025F4 /* Component */,
+				042F52832D788B1E00B025F4 /* TrackView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		042F52862D788B1E00B025F4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				042F52852D788B1E00B025F4 /* TrackViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		042F528A2D788B1E00B025F4 /* ritmix */ = {
+			isa = PBXGroup;
+			children = (
+				042F52752D788B1E00B025F4 /* Model */,
+				042F52772D788B1E00B025F4 /* Preview Content */,
+				042F527B2D788B1E00B025F4 /* Service */,
+				042F527D2D788B1E00B025F4 /* Utils */,
+				042F52842D788B1E00B025F4 /* View */,
+				042F52862D788B1E00B025F4 /* ViewModel */,
+				042F52872D788B1E00B025F4 /* Assets.xcassets */,
+				042F52882D788B1E00B025F4 /* Info.plist */,
+				042F52892D788B1E00B025F4 /* ritmixApp.swift */,
+			);
+			path = ritmix;
+			sourceTree = "<group>";
+		};
+		042F52A02D788B2100B025F4 /* ritmixTests */ = {
+			isa = PBXGroup;
+			children = (
+				042F529B2D788B2100B025F4 /* AudioPlayerServiceTests.swift */,
+				042F529C2D788B2100B025F4 /* HttpServiceTests.swift */,
+				042F529D2D788B2100B025F4 /* PlaybackServiceTests.swift */,
+				042F529E2D788B2100B025F4 /* ritmixTests.swift */,
+				042F529F2D788B2100B025F4 /* TrackViewModelTests.swift */,
+			);
+			path = ritmixTests;
+			sourceTree = "<group>";
+		};
+		042F52A82D788B2400B025F4 /* ritmixUITests */ = {
+			isa = PBXGroup;
+			children = (
+				042F52A62D788B2400B025F4 /* ritmixUITests.swift */,
+				042F52A72D788B2400B025F4 /* ritmixUITestsLaunchTests.swift */,
+			);
+			path = ritmixUITests;
+			sourceTree = "<group>";
+		};
 		04EB28BA2D759224005A1907 = {
 			isa = PBXGroup;
 			children = (
+				042F52082D78865300B025F4 /* ritmix.xctestplan */,
 				04C972302D772EBE0077E5EF /* ritmixTests.xctestplan */,
-				04EB28C52D759224005A1907 /* ritmix */,
-				04EB28D62D759225005A1907 /* ritmixTests */,
-				04EB28E02D759225005A1907 /* ritmixUITests */,
+				042F528A2D788B1E00B025F4 /* ritmix */,
+				042F52A02D788B2100B025F4 /* ritmixTests */,
+				042F52A82D788B2400B025F4 /* ritmixUITests */,
 				04EB28C42D759224005A1907 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -109,12 +241,7 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				04EB28C52D759224005A1907 /* ritmix */,
-			);
 			name = ritmix;
-			packageProductDependencies = (
-			);
 			productName = ritmix;
 			productReference = 04EB28C32D759224005A1907 /* ritmix.app */;
 			productType = "com.apple.product-type.application";
@@ -132,12 +259,7 @@
 			dependencies = (
 				04EB28D52D759225005A1907 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				04EB28D62D759225005A1907 /* ritmixTests */,
-			);
 			name = ritmixTests;
-			packageProductDependencies = (
-			);
 			productName = ritmixTests;
 			productReference = 04EB28D32D759225005A1907 /* ritmixTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -155,12 +277,7 @@
 			dependencies = (
 				04EB28DF2D759225005A1907 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				04EB28E02D759225005A1907 /* ritmixUITests */,
-			);
 			name = ritmixUITests;
-			packageProductDependencies = (
-			);
 			productName = ritmixUITests;
 			productReference = 04EB28DD2D759225005A1907 /* ritmixUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -214,6 +331,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				042F528B2D788B1E00B025F4 /* Preview Assets.xcassets in Resources */,
+				042F528C2D788B1E00B025F4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +357,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				042F528E2D788B1E00B025F4 /* iTunesResponse.swift in Sources */,
+				042F528F2D788B1E00B025F4 /* Track.swift in Sources */,
+				042F52902D788B1E00B025F4 /* AudioPlayerService.swift in Sources */,
+				042F52912D788B1E00B025F4 /* HttpService.swift in Sources */,
+				042F52922D788B1E00B025F4 /* PlaybackService.swift in Sources */,
+				042F52932D788B1E00B025F4 /* TruncateText.swift in Sources */,
+				042F52942D788B1E00B025F4 /* PlaybackControl.swift in Sources */,
+				042F52952D788B1E00B025F4 /* Thumbnail.swift in Sources */,
+				042F52962D788B1E00B025F4 /* TrackItem.swift in Sources */,
+				042F52972D788B1E00B025F4 /* TrackSkeleton.swift in Sources */,
+				042F52982D788B1E00B025F4 /* TrackView.swift in Sources */,
+				042F52992D788B1E00B025F4 /* TrackViewModel.swift in Sources */,
+				042F529A2D788B1E00B025F4 /* ritmixApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +377,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				042F52A12D788B2100B025F4 /* AudioPlayerServiceTests.swift in Sources */,
+				042F52A22D788B2100B025F4 /* HttpServiceTests.swift in Sources */,
+				042F52A32D788B2100B025F4 /* PlaybackServiceTests.swift in Sources */,
+				042F52A42D788B2100B025F4 /* ritmixTests.swift in Sources */,
+				042F52A52D788B2100B025F4 /* TrackViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +389,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				042F52A92D788B2400B025F4 /* ritmixUITests.swift in Sources */,
+				042F52AA2D788B2400B025F4 /* ritmixUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,7 +462,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -380,7 +519,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -396,12 +535,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ritmix/Preview Content\"";
-				DEVELOPMENT_TEAM = S9J78CS67W;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = S9J78CS67W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ritmix/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -410,7 +552,7 @@
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -418,6 +560,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ritmix;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Personal Profile";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -430,12 +574,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ritmix/Preview Content\"";
-				DEVELOPMENT_TEAM = S9J78CS67W;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = S9J78CS67W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ritmix/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -444,7 +591,7 @@
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -452,6 +599,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ritmix;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = RitmixASC;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -462,11 +611,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = S9J78CS67W;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ritmixTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -481,11 +630,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = S9J78CS67W;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ritmixTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -499,8 +648,8 @@
 		04EB28EE2D759225005A1907 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = S9J78CS67W;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
@@ -516,8 +665,8 @@
 		04EB28EF2D759225005A1907 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = S9J78CS67W;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
