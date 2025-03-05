@@ -9,11 +9,13 @@ import SwiftUI
 
 struct TrackItem: View {
     var track: Track
+    var variant: String = "big"
     let currentlyPlaying: Bool;
+    
     
     var body: some View {
         HStack(spacing: 16) {
-            Thumbnail(url: track.thumbnail ?? "")
+            Thumbnail(url: track.thumbnail ?? "", size: variant == "big" ? 70 : 50)
             
             VStack(alignment: .leading, spacing: 4) {
                 Text(track.title ?? "")
@@ -26,10 +28,12 @@ struct TrackItem: View {
                     .font(.subheadline)
                     .foregroundStyle(currentlyPlaying ? .accent : .primary)
                     .truncated()
-                Text(track.album ?? "")
-                    .font(.subheadline)
-                    .foregroundStyle(currentlyPlaying ? .accent : .gray)
-                    .truncated()
+                if variant == "big" {
+                    Text(track.album ?? "")
+                        .font(.subheadline)
+                        .foregroundStyle(currentlyPlaying ? .accent : .gray)
+                        .truncated()
+                }
             }
             Spacer()
             
@@ -37,7 +41,7 @@ struct TrackItem: View {
                 Image(systemName: "waveform")
                     .symbolEffect(.variableColor.iterative)
                     .foregroundStyle(.accent)
-                    .font(.system(size: 24))
+                    .font(.system(size: variant == "big" ? 24 : 16))
             }
         }
         .contentShape(Rectangle())

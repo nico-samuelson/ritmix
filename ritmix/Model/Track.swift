@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Track: Codable {
+struct Track: Codable, Equatable {
     var id: Int?
     let title: String?
     let artist: String?
@@ -22,5 +22,9 @@ struct Track: Codable {
         case album = "collectionName"
         case thumbnail = "artworkUrl100"
         case playUrl = "previewUrl"
+    }
+    
+    static func == (lhs: Track, rhs: Track) -> Bool {
+        return lhs.id == rhs.id
     }
 }

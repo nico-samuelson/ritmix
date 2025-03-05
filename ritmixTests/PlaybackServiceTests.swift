@@ -39,7 +39,26 @@ final class PlaybackServiceTests: XCTestCase {
                 playUrl:
                     "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/67/69/6d/67696df4-c2da-e548-5e50-679f3466c368/mzaf_484185972701973857.plus.aac.p.m4a"
             ),
+            Track(
+                id: 4,
+                title: "STAY",
+                artist: "Justin Bieber",
+                album: "F*CK LOVE 3+: OVER YOU",
+                thumbnail: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/9d/69/f1/9d69f15c-7bcc-24e9-0adc-ec3afd0bf5cc/886449473663.jpg/100x100bb.jpg",
+                playUrl:
+                    "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/67/69/6d/67696df4-c2da-e548-5e50-679f3466c368/mzaf_484185972701973857.plus.aac.p.m4a"
+            ),
+            Track(
+                id: 5,
+                title: "STAY",
+                artist: "Justin Bieber",
+                album: "F*CK LOVE 3+: OVER YOU",
+                thumbnail: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/9d/69/f1/9d69f15c-7bcc-24e9-0adc-ec3afd0bf5cc/886449473663.jpg/100x100bb.jpg",
+                playUrl:
+                    "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/67/69/6d/67696df4-c2da-e548-5e50-679f3466c368/mzaf_484185972701973857.plus.aac.p.m4a"
+            ),
         ]
+        playbackService.queue = playbackService.tracks
     }
     
     override func setUp() {
@@ -81,24 +100,24 @@ final class PlaybackServiceTests: XCTestCase {
     }
     
     func testPlayNextTrack() {
-        let expectation1 = expectation(description: "Third track should be playing")
+        let expectation1 = expectation(description: "Fifth track should be playing")
         let expectation2 = expectation(description: "First track should be playing")
-        self.playbackService.currentTrack = self.playbackService.tracks[1]
+        self.playbackService.currentTrack = self.playbackService.tracks[3]
         self.playbackService.playTrack()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) { [weak self] in
             guard let self = self else { return }
             self.playbackService.playNextTrack()
-//            DispatchQueue.main.asyncAfter(.now() + 1.0) {
-                XCTAssertEqual(self.playbackService.getCurrentTrackIndex(), 2, "Third track should be playing")
-                expectation1.fulfill()
-                
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    self.playbackService.playNextTrack()
-                    XCTAssertEqual(self.playbackService.getCurrentTrackIndex(), 0, "First track should be playing")
-                    expectation2.fulfill()
-//                }
-//            }
+            //            DispatchQueue.main.asyncAfter(.now() + 1.0) {
+            XCTAssertEqual(self.playbackService.getCurrentTrackIndex(), 4, "Fifth track should be playing")
+            expectation1.fulfill()
+            
+            //                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.playbackService.playNextTrack()
+            XCTAssertEqual(self.playbackService.getCurrentTrackIndex(), 0, "First track should be playing")
+            expectation2.fulfill()
+            //                }
+            //            }
         }
         
         waitForExpectations(timeout: 6, handler: nil)
@@ -120,7 +139,7 @@ final class PlaybackServiceTests: XCTestCase {
     
     func testPlayPrevTrack() {
         let expectation1 = expectation(description: "First track should be playing")
-        let expectation2 = expectation(description: "Third track should be playing")
+        let expectation2 = expectation(description: "Fifth track should be playing")
         
         // Set the initial track to the second one
         self.playbackService.currentTrack = self.playbackService.tracks[1]
@@ -134,13 +153,13 @@ final class PlaybackServiceTests: XCTestCase {
             expectation1.fulfill()
             
             self.playbackService.playPrevTrack()
-            XCTAssertEqual(self.playbackService.getCurrentTrackIndex(), 2, "Third track should be playing")
+            XCTAssertEqual(self.playbackService.getCurrentTrackIndex(), 4, "Fifth track should be playing")
             expectation2.fulfill()
         }
         
         waitForExpectations(timeout: 10.0, handler: nil)
     }
-
+    
     
     func testSeeking() {
         let expectation = expectation(description: "Can seek to specific time")
@@ -154,4 +173,32 @@ final class PlaybackServiceTests: XCTestCase {
         
         waitForExpectations(timeout: 10.0, handler: nil)
     }
+    
+    func testShuffleRemainingQueue() {
+        let expectation = expectation(description: "Tracks after the current track should be shuffled")
+        
+        // Set up initial state
+        playbackService.currentTrack = playbackService.tracks[0] // Assume first track is playing
+        let originalQueue = playbackService.tracks
+        
+        // Call shuffle function
+        playbackService.toggleShuffle()
+        
+        // Extract shuffled portion
+        let currentIndex = playbackService.getCurrentTrackIndex()
+        let shuffledPart = Array(playbackService.queue[(currentIndex + 1)...])
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            XCTAssertEqual(self.playbackService.queue.prefix(currentIndex + 1), originalQueue.prefix(currentIndex + 1), "Tracks before the current track should remain unchanged")
+            
+            XCTAssertNotEqual(shuffledPart, Array(originalQueue[(currentIndex + 1)...]), "Tracks after the current track should be shuffled")
+            
+            XCTAssertEqual(self.playbackService.queue.sorted { $0.id ?? 0 < $1.id ?? 0 }, originalQueue.sorted { $0.id ?? 0 < $1.id ?? 0 }, "Shuffling should not add or remove tracks")
+            
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5.0, handler: nil)
+    }
+    
 }

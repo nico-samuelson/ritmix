@@ -18,8 +18,10 @@ struct PlaybackControl: View {
                 VStack(alignment: .leading) {
                     Text(viewModel.playbackManager.currentTrack?.title ?? "")
                         .fontWeight(.bold)
+                        .foregroundStyle(.primary)
                         .truncated()
                     Text(viewModel.playbackManager.currentTrack?.artist ?? "")
+                        .foregroundStyle(.primary)
                         .truncated()
                 }
                 

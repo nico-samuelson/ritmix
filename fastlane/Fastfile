@@ -61,6 +61,7 @@ platform :ios do
       project: "ritmix.xcodeproj",
       devices: ["iPhone 14"],
       scheme: "ritmixTests",
+      only_testing: ["ritmixTests"],
     )
   end
 
