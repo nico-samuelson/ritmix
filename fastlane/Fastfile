@@ -138,6 +138,7 @@ platform :ios do
     # tests
     fetch_and_increment_build_number
     build_release
-    upload_release
+    upload_to_testflight(skip_waiting_for_build_processing: true)
+    # upload_release
   end
 end
