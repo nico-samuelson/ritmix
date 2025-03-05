@@ -61,7 +61,7 @@ platform :ios do
     run_tests(
       project: "ritmix.xcodeproj",
       devices: ["iPhone 15"],
-      scheme: "ritmixTests",
+      scheme: "ritmix",
       testplan: './ritmix.xctestplan'
     )
   end

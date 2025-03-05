@@ -1,0 +1,28 @@
+{
+  "configurations" : [
+    {
+      "id" : "D1D7FB01-720F-404B-B516-2DC13A4DE6D2",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:ritmix.xcodeproj",
+      "identifier" : "04EB28C22D759224005A1907",
+      "name" : "ritmix"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:ritmix.xcodeproj",
+        "identifier" : "04EB28D22D759225005A1907",
+        "name" : "ritmixTests"
+      }
+    }
+  ],
+  "version" : 1
+}
