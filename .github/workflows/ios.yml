@@ -59,8 +59,7 @@ jobs:
           -sdk iphoneos \
           -configuration Release \
           -destination generic/platform=iOS \
-          -verbose
-          clean archive          
+          -verbose 
 
       - name: export ipa
         env:
