@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -49,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		042F516B2D7824AA00B025F4 /* ritmixTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ritmixTests.xctestplan; sourceTree = "<group>"; };
+		042F516C2D782B9800B025F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		04C973622D7760380077E5EF /* iTunesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesResponse.swift; sourceTree = "<group>"; };
 		04C973632D7760380077E5EF /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		04C973652D7760380077E5EF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -166,6 +167,7 @@
 		04C973782D7760380077E5EF /* ritmix */ = {
 			isa = PBXGroup;
 			children = (
+				042F516C2D782B9800B025F4 /* Info.plist */,
 				04C973642D7760380077E5EF /* Model */,
 				04C973662D7760380077E5EF /* Preview Content */,
 				04C9736A2D7760380077E5EF /* Service */,
@@ -542,6 +544,7 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = S9J78CS67W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ritmix/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -581,6 +584,7 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = S9J78CS67W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ritmix/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
