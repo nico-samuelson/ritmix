@@ -18,6 +18,7 @@ jobs:
           xcodebuild test -project ritmix.xcodeproj \
             -scheme ritmixTests \
             -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
+            -only-testing:ritmixTests
             CODE_SIGNING_ALLOWED=NO
   
   archive:
