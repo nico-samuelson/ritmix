@@ -21,8 +21,10 @@ jobs:
       - name: Get List of Simulators
         run: xcrun simctl list devices
 
-      - name: Create Simulator
-        run: xcrun simctl create "TestiPhone" "iPhone 15" "com.apple.CoreSimulator.SimRuntime.iOS-17-5"
+      - name: Install iOS 18.2 Simulator
+        run: |
+          sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
+          xcversion simulators --install="iOS 18.2"
 
       - name: Run Unit Test
         run: |
