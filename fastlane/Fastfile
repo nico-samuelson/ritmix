@@ -55,8 +55,7 @@ platform :ios do
       readonly: true
     )
   end
-
-  desc "Run Unit Tests"
+  
   lane :tests do
     run_tests(
       project: "ritmix.xcodeproj",

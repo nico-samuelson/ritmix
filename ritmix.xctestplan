@@ -17,6 +17,7 @@
   },
   "testTargets" : [
     {
+      "parallelizable" : false,
       "target" : {
         "containerPath" : "container:ritmix.xcodeproj",
         "identifier" : "04EB28D22D759225005A1907",
