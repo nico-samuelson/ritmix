@@ -57,8 +57,9 @@ jobs:
           xcodebuild -scheme "ritmix" \
           -archivePath $RUNNER_TEMP/ritmix.xcarchive \
           -sdk iphoneos \
-          -configuration Debug \
+          -configuration Release \
           -destination generic/platform=iOS \
+          -verbose
           clean archive          
 
       - name: export ipa
