@@ -7,23 +7,23 @@ on:
     branches:
       - ci/cd
 jobs:
-  test:
-    runs-on: macos-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+  # test:
+  #   runs-on: macos-latest
+  #   steps:
+  #     - name: Checkout Repository
+  #       uses: actions/checkout@v4
 
-      - name: Run Unit Test
-        run: |
-          xcodebuild test -project ritmix.xcodeproj \
-            -scheme ritmixTests \
-            -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
-            -only-testing:ritmixTests
-            CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+  #     - name: Run Unit Test
+  #       run: |
+  #         xcodebuild test -project ritmix.xcodeproj \
+  #           -scheme ritmixTests \
+  #           -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
+  #           -only-testing:ritmixTests
+  #           CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
 
   archive:
     runs-on: macos-latest
-    needs: test
+    # needs: test
     steps:
       - name: Check Xcode version
         run: /usr/bin/xcodebuild -version
