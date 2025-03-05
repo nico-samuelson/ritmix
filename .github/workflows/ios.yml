@@ -17,6 +17,9 @@ jobs:
         uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: latest-stable
+          
+      - name: Get List of Simulators
+        run: xcrun simctl list devices
 
       - name: Run Unit Test
         run: |
