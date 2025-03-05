@@ -1,5 +1,5 @@
 # Screenshot
-<img src='./screenshot.png' alt="App Screenshot" width=300>
+<img src='./screenshot.jpg' alt="App Screenshot" width=300>
 
 # About
 RitMix is a sleek and lightweight music player that lets you explore and enjoy song previews seamlessly. Powered by the iTunes API, RitMix allows users to search for their favorite tracks and listen to high-quality previews with ease.
