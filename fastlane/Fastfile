@@ -56,7 +56,7 @@ platform :ios do
     )
   end
 
-  desc: "Run Unit Tests"
+  desc "Run Unit Tests"
   lane :tests do
     run_tests(
       project: "ritmix.xcodeproj",
