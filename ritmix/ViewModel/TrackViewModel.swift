@@ -34,10 +34,12 @@ class TrackViewModel: ObservableObject {
                 switch result {
                 case .success(let tracks):
                     self.playbackManager.tracks = tracks
+                    self.playbackManager.queue = tracks
                     self.errors = nil
                     self.pageState = tracks.count == 0 ? .notFound : .found
                 case .failure(let error):
                     self.playbackManager.tracks = []
+                    self.playbackManager.queue = []
                     self.errors = error.localizedDescription
                     self.pageState = .error
                 }

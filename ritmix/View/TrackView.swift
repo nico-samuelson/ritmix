@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TrackView: View {
     @State private var viewModel = TrackViewModel()
+    @State private var showQueue: Bool = false
     @FocusState private var isFocused: Bool
     
     var body: some View {
@@ -99,6 +100,81 @@ struct TrackView: View {
                 .overlay(alignment: .bottom) {
                     if viewModel.playbackManager.currentTrack != nil {
                         PlaybackControl(viewModel: $viewModel)
+                            .onTapGesture {
+                                showQueue = true
+                                isFocused = false
+                            }
+                            .sheet(isPresented: $showQueue) {
+                                VStack(alignment: .leading) {
+                                    Text("Queue")
+                                        .fontWeight(.bold)
+                                        .font(.title3)
+                                        .padding(.leading, 16)
+                                    List {
+                                        ForEach(Array(Array(viewModel.playbackManager.queue[viewModel.playbackManager.getCurrentTrackIndex()...]).enumerated()), id: \.element.id) { index, track in
+                                            TrackItem(
+                                                track: track,
+                                                variant: "small",
+                                                currentlyPlaying: viewModel.playbackManager.currentTrack?.id == track.id
+                                            )
+                                            .listRowSeparator(.hidden)
+                                            .onTapGesture {
+                                                withAnimation {
+                                                    viewModel.playbackManager.currentTrack = track
+                                                    viewModel.playbackManager.playTrack()
+                                                }
+                                            }
+                                            .swipeActions(edge: .trailing) {
+                                                Button(role: .destructive) {
+                                                    withAnimation {
+                                                        viewModel.playbackManager.removeFromQueue(track: track)
+                                                    }
+                                                } label: {
+                                                    Label("Remove", systemImage: "trash")
+                                                }
+                                            }
+                                        }
+                                    }
+                                    HStack {
+                                        
+                                        Button {
+                                            viewModel.playbackManager.toggleShuffle()
+                                        } label : {
+                                            VStack {
+                                                Image(systemName: "shuffle")
+                                                    .foregroundStyle(viewModel.playbackManager.isShuffled ? .accent : .primary)
+                                                Text("Shuffle")
+                                                    .foregroundStyle(viewModel.playbackManager.isShuffled ? .accent : .primary)
+                                            }
+                                        }
+                                        .buttonStyle(.bordered)
+                                        .controlSize(.extraLarge)
+                                        .buttonBorderShape(.roundedRectangle)
+                                        
+                                        
+                                        Button {
+                                            viewModel.playbackManager.isRepeat.toggle()
+                                        } label : {
+                                            VStack {
+                                                Image(systemName: "repeat")
+                                                    .foregroundStyle(viewModel.playbackManager.isRepeat ? .accent : .primary)
+                                                Text("Repeat")
+                                                    .foregroundStyle(viewModel.playbackManager.isRepeat ? .accent : .primary)
+                                            }
+                                        }
+                                        .buttonStyle(.bordered)
+                                        .controlSize(.extraLarge)
+                                        .buttonBorderShape(.roundedRectangle)
+                                        
+                                    }
+                                    .frame(width: gr.size.width)
+                                    .padding([.top], 20)
+                                    .background(Color.bg)
+                                }
+                                .padding([.top], 20)
+                                .listStyle(.plain)
+                                .presentationDetents([.medium, .large])
+                            }
                     }
                 }
                 .simultaneousGesture(
@@ -115,9 +191,14 @@ struct TrackView: View {
         }
         .onReceive(NotificationCenter.default.publisher(for: Notification.Name("TrackFinished"))) { _ in
             withAnimation {
-                let index = (viewModel.playbackManager.getCurrentTrackIndex() + 1) % viewModel.playbackManager.tracks.count
-                viewModel.playbackManager.currentTrack = viewModel.playbackManager.tracks[index]
-                viewModel.playbackManager.playTrack()
+                if viewModel.playbackManager.isRepeat {
+                    viewModel.playbackManager.seekTo(second: 0)
+                }
+                else {
+                    let index = (viewModel.playbackManager.getCurrentTrackIndex() + 1) % viewModel.playbackManager.tracks.count
+                    viewModel.playbackManager.currentTrack = viewModel.playbackManager.tracks[index]
+                    viewModel.playbackManager.playTrack()
+                }
             }
         }
     }
