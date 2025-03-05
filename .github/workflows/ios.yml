@@ -87,3 +87,11 @@ jobs:
           ls -R "$ARCHIVE_PATH"
 
           xcodebuild -exportArchive -archivePath $RUNNER_TEMP/ritmix.xcarchive -exportOptionsPlist $EXPORT_OPTS_PATH -exportPath $RUNNER_TEMP/build          
+
+      - name: Upload to TestFlight
+        uses: apple-actions/upload-testflight-build@v1
+        with:
+          app-path: ${{ runner.temp }}/build/ritmix.ipa
+          issuer-id: ${{ secrets.APP_STORE_API_ISSUER_ID }}
+          api-key-id: ${{ secrets.APP_STORE_API_KEY_ID }}
+          api-private-key: ${{ secrets.APP_STORE_API_PRIVATE_KEY }}
