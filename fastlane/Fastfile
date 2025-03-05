@@ -1,4 +1,5 @@
 opt_out_usage
+update_fastlane
 
 default_platform(:ios)
 
@@ -55,11 +56,11 @@ platform :ios do
       readonly: true
     )
   end
-  
+
   lane :tests do
     run_tests(
       project: "ritmix.xcodeproj",
-      devices: ["iPhone 15"],
+      devices: ["iPhone 14"],
       scheme: "ritmix",
       testplan: './ritmix.xctestplan'
     )
