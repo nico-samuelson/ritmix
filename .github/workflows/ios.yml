@@ -21,11 +21,14 @@ jobs:
       - name: Get List of Simulators
         run: xcrun simctl list devices
 
+      - name: Show Eligible Destinations
+        run: xcodebuild -project ritmix.xcodeproj -scheme ritmixTests -showdestinations
+
       - name: Run Unit Test
         run: |
           xcodebuild test -project ritmix.xcodeproj \
             -scheme ritmixTests \
-            -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.5' \
+            -destination 'platform=iOS Simulator,name=iPhone 15' \
             -only-testing:ritmixTests
             CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
 
