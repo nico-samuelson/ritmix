@@ -2,24 +2,24 @@ name: iOS CI/CD Pipeline
 on:
   push:
     branches:
-      - ci/cd
+      - main
   pull_request:
     branches:
-      - ci/cd
+      - main
 jobs:
-  # test:
-  #   runs-on: macos-latest
-  #   steps:
-  #     - name: Checkout Repository
-  #       uses: actions/checkout@v4
+  test:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-  #     - name: Run Unit Test
-  #       run: |
-  #         xcodebuild test -project ritmix.xcodeproj \
-  #           -scheme ritmixTests \
-  #           -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
-  #           -only-testing:ritmixTests
-  #           CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+      - name: Run Unit Test
+        run: |
+          xcodebuild test -project ritmix.xcodeproj \
+            -scheme ritmixTests \
+            -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
+            -only-testing:ritmixTests
+            CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
 
   archive:
     runs-on: macos-latest
@@ -87,62 +87,9 @@ jobs:
           xcodebuild -exportArchive -archivePath $RUNNER_TEMP/ritmix.xcarchive -exportOptionsPlist $EXPORT_OPTS_PATH -exportPath $RUNNER_TEMP/build
 
       - name: Upload to TestFlight
-        # uses: apple-actions/upload-testflight-build@v1
-        # with:
-        # app-path: ${{ runner.temp }}/build/ritmix.ipa
-        # issuer-id: ${{ secrets.APP_STORE_API_ISSUER_ID }}
-        # api-key-id: ${{ secrets.APP_STORE_API_KEY_ID }}
-        # api-private-key: ${{ secrets.APP_STORE_API_PRIVATE_KEY }}
-        # TestFlight Groups (comma-separated if multiple)
-        run: |
-          # TestFlight Groups (comma-separated if multiple)
-          TESTFLIGHT_GROUPS="Beta Testers,Internal Testers"
-          
-          # Prepare the API key file from secret
-          mkdir -p "$HOME/.appstoreconnect/private_keys"
-          touch "$HOME/.appstoreconnect/private_keys/AuthKey_${{ secrets.APP_STORE_API_KEY_ID }}.p8"
-          echo "${{ secrets.APP_STORE_API_PRIVATE_KEY }}" > "$HOME/.appstoreconnect/private_keys/AuthKey_${{ secrets.APP_STORE_API_KEY_ID }}.p8"
-
-          if [ ! -f "$HOME/.appstoreconnect/private_keys/AuthKey_${{ secrets.APP_STORE_API_KEY_ID }}.p8" ]; then
-            echo "Error: API key file not found!"
-            exit 1
-          fi
-          echo "API key file created"
-          chmod 400 "$HOME/.appstoreconnect/private_keys/AuthKey_${{ secrets.APP_STORE_API_KEY_ID }}.p8"
-          
-          # Upload to TestFlight using altool
-          xcrun altool --upload-app \
-            -f "${{ runner.temp }}/build/ritmix.ipa" \
-            --type ios \
-            --apiKey "${{ secrets.APP_STORE_API_KEY_ID }}" \
-            --apiIssuer "${{ secrets.APP_STORE_API_ISSUER_ID }}" \
-            --apiPrivateKeyPath "$HOME/.appstoreconnect/private_keys/AuthKey_${{ secrets.APP_STORE_API_KEY_ID }}.p8"
-          
-          # Wait a moment for the build to process
-          sleep 30
-          
-          # Get the latest build ID
-          BUILD_ID=$(xcrun altool --list-builds \
-            -u "${{ secrets.APPLE_ID }}" \
-            -p "${{ secrets.APP_SPECIFIC_PASSWORD }}" \
-            --apiKey "${{ secrets.APP_STORE_API_KEY_ID }}" \
-            --apiIssuerID "${{ secrets.APP_STORE_API_ISSUER_ID }}" \
-            --apiPrivateKeyPath "$HOME/.appstoreconnect/private_keys/AuthKey_${{ secrets.APP_STORE_API_KEY_ID }}.p8"
-            | grep -m 1 "Build:" | awk '{print $2}')
-          
-          # Distribute to groups
-          for GROUP in $(echo "$TESTFLIGHT_GROUPS" | tr ',' '\n')
-          do
-            echo "Adding build to group: $GROUP"
-            xcrun altool --add-build-to-testflight-group \
-              -u "${{ secrets.APPLE_ID }}" \
-              -p "${{ secrets.APP_SPECIFIC_PASSWORD }}" \
-              --apiKey "${{ secrets.APP_STORE_API_KEY_ID }}" \
-              --apiIssuerID "${{ secrets.APP_STORE_API_ISSUER_ID }}" \
-              --apiPrivateKeyPath "$HOME/.appstoreconnect/private_keys/AuthKey_${{ secrets.APP_STORE_API_KEY_ID }}.p8"
-              --group "$GROUP" \
-              --build "$BUILD_ID"
-          done
-          
-          # Clean up the API key file
-          rm "${{ runner.temp }}/api_key.p8"
+        uses: apple-actions/upload-testflight-build@v1
+        with:
+          app-path: ${{ runner.temp }}/build/ritmix.ipa
+          issuer-id: ${{ secrets.APP_STORE_API_ISSUER_ID }}
+          api-key-id: ${{ secrets.APP_STORE_API_KEY_ID }}
+          api-private-key: ${{ secrets.APP_STORE_API_PRIVATE_KEY }}
