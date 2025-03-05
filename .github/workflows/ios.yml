@@ -19,7 +19,7 @@ jobs:
             -scheme ritmixTests \
             -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
             -only-testing:ritmixTests
-            CODE_SIGNING_ALLOWED=NO
+            CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
   
   archive:
     runs-on: macos-latest
