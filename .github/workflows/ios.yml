@@ -108,7 +108,7 @@ jobs:
             --type ios \
             --apiKey "${{ secrets.APP_STORE_API_KEY_ID }}" \
             --apiIssuer "${{ secrets.APP_STORE_API_ISSUER_ID }}" \
-            --apiPrivateKeyPath "${{ runner.temp }}/api_key.p8"
+            --apiPrivateKeyPath "~/.appstoreconnect/private_keys/AuthKey_${{ secrets.APP_STORE_API_KEY_ID }}.p8"
           
           # Wait a moment for the build to process
           sleep 30
