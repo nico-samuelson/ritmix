@@ -49,7 +49,7 @@ jobs:
 
       - name: build archive
         run: |
-          xcodebuild -scheme "ritmix" \
+          xcodebuild archive -scheme "ritmix" \
           -archivePath $RUNNER_TEMP/ritmix.xcarchive \
           -sdk iphoneos \
           -configuration Release \
